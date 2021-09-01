@@ -28,6 +28,9 @@ namespace NZMartialArtsGymFinderAPI.Models
 		[Required]
 		public string ZipCode { get; set; }
 		public string ContactEmail { get; set; }
+
+		public string MobileNumber { get; set; }
+		public string LandlineNumber { get; set; }
 		[Required]
 		public int RegionId { get; set; }
 		[ForeignKey("RegionId")]

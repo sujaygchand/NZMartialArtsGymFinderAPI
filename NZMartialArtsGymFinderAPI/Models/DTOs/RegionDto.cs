@@ -13,7 +13,7 @@ namespace NZMartialArtsGymFinderAPI.Models.DTOs
 		[Required]
 		public string Name { get; set; }
 
-		public string AreaCode { get; set; }
+		public string DiallingCode { get; set; }
 
 		public byte[] Picture { get; set; }
 	}

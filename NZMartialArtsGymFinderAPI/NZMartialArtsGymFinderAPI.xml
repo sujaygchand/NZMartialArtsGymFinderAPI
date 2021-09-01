@@ -17,5 +17,27 @@
             <param name="id"> The Id of the Region </param>
             <returns></returns>
         </member>
+        <member name="M:NZMartialArtsGymFinderAPI.Controllers.RegionController.CreateRegion(NZMartialArtsGymFinderAPI.Models.DTOs.RegionDto)">
+            <summary>
+            Create Region
+            </summary>
+            <param region = "regionDto"> The Region details </param>
+            <returns></returns>
+        </member>
+        <member name="M:NZMartialArtsGymFinderAPI.Controllers.RegionController.UpdateRegion(System.Int32,NZMartialArtsGymFinderAPI.Models.DTOs.RegionDto)">
+            <summary>
+            Update Region
+            </summary>
+            <param name="id"> The Id of the Region </param>
+            <param region = "regionDto"> The Region details </param>
+            <returns></returns>
+        </member>
+        <member name="M:NZMartialArtsGymFinderAPI.Controllers.RegionController.DeleteRegion(System.Int32)">
+            <summary>
+            Delete Region
+            </summary>
+            <param name="id"> The Id of the Region </param>
+            <returns></returns>
+        </member>
     </members>
 </doc>

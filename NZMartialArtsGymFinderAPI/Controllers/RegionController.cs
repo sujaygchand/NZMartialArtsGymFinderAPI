@@ -72,6 +72,11 @@ namespace NZMartialArtsGymFinderAPI.Controllers
 			return Ok(regionDto);
 		}
 
+		/// <summary>
+		/// Create Region
+		/// </summary>
+		/// <param region = "regionDto"> The Region details </param>
+		/// <returns></returns>
 		[HttpPost]
 		[ProducesResponseType(201, Type = typeof(RegionDto))]
 		[ProducesResponseType(StatusCodes.Status201Created)]
@@ -87,6 +92,8 @@ namespace NZMartialArtsGymFinderAPI.Controllers
 				ModelState.AddModelError("", $"{regionDto.Name} Region already exists");
 				return StatusCode(404, ModelState);
 			}
+			
+			regionDto.Id = 0;
 
 			Region region = _mapper.Map<Region>(regionDto);
 
@@ -99,6 +106,12 @@ namespace NZMartialArtsGymFinderAPI.Controllers
 			return CreatedAtRoute(nameof(GetRegion), new { id = region.Id }, region);
 		}
 
+		/// <summary>
+		/// Update Region
+		/// </summary>
+		/// <param name="id"> The Id of the Region </param>
+		/// <param region = "regionDto"> The Region details </param>
+		/// <returns></returns>
 		[HttpPatch("{id:int}", Name = nameof(UpdateRegion))]
 		[ProducesResponseType(StatusCodes.Status201Created)]
 		[ProducesResponseType(StatusCodes.Status404NotFound)]
@@ -125,6 +138,11 @@ namespace NZMartialArtsGymFinderAPI.Controllers
 			return NoContent();
 		}
 
+		/// <summary>
+		/// Delete Region
+		/// </summary>
+		/// <param name="id"> The Id of the Region </param>
+		/// <returns></returns>
 		[HttpDelete("{id:int}", Name = nameof(DeleteRegion))]
 		[ProducesResponseType(StatusCodes.Status204NoContent)]
 		[ProducesResponseType(StatusCodes.Status404NotFound)]
@@ -138,6 +156,12 @@ namespace NZMartialArtsGymFinderAPI.Controllers
 			Region region = _regionRepo.GetRegion(id);
 
 			if(region == null)
+			{
+				ModelState.AddModelError("", $"The Region does not exist for deletion");
+				return StatusCode(500, ModelState);
+			}
+
+			if(_regionRepo.TryDeleteRegion(region) == false)
 			{
 				ModelState.AddModelError("", $"Something went wrong when deleting the record {region.Name}");
 				return StatusCode(500, ModelState);
