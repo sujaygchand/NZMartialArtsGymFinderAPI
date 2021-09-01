@@ -16,21 +16,8 @@ namespace NZMartialArtsGymFinderAPI.Models
 		[Required]
 		public string Name { get; set; }
 
-		public enum MartialArts {
-			[Description("MMA")]
-			MMA,
-			[Description("Muay Thai | Kickboxing")]
-			MuayThai,
-			[Description("BJJ")]
-			BJJ,
-			[Description("Wrestling")]
-			Wrestling,
-			[Description("Boxing")]
-			Boxing
-		}
-
 		[Required]
-		public ICollection<MartialArts> MartialArtsTaught { get; set; }
+		public List<MartialArt> MartialArtsTaught { get; set; }
 
 		public string Website { get; set; }
 

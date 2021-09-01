@@ -14,6 +14,9 @@ namespace NZMartialArtsGymFinderAPI.Data
 
 		}
 
-		public DbSet<RegionDTO> Regions { get; set; }
+		public DbSet<Region> Regions { get; set; }
+		public DbSet<Gym> Gyms { get; set; }
+		public DbSet<MartialArt> MartialArts { get; set; }
+		public DbSet<User> Users { get; set; }
 	}
 }
