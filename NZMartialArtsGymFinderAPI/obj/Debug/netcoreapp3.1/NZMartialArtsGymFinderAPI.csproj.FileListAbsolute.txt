@@ -6,7 +6,6 @@ E:\SoftwareDevelopment\C# projects\NZMartialArtsGymFinder\NZMartialArtsGymFinder
 E:\SoftwareDevelopment\C# projects\NZMartialArtsGymFinder\NZMartialArtsGymFinderAPI\NZMartialArtsGymFinderAPI\bin\Debug\netcoreapp3.1\NZMartialArtsGymFinderAPI.runtimeconfig.dev.json
 E:\SoftwareDevelopment\C# projects\NZMartialArtsGymFinder\NZMartialArtsGymFinderAPI\NZMartialArtsGymFinderAPI\bin\Debug\netcoreapp3.1\NZMartialArtsGymFinderAPI.dll
 E:\SoftwareDevelopment\C# projects\NZMartialArtsGymFinder\NZMartialArtsGymFinderAPI\NZMartialArtsGymFinderAPI\bin\Debug\netcoreapp3.1\NZMartialArtsGymFinderAPI.pdb
-E:\SoftwareDevelopment\C# projects\NZMartialArtsGymFinder\NZMartialArtsGymFinderAPI\NZMartialArtsGymFinderAPI\obj\Debug\netcoreapp3.1\NZMartialArtsGymFinderAPI.csproj.AssemblyReference.cache
 E:\SoftwareDevelopment\C# projects\NZMartialArtsGymFinder\NZMartialArtsGymFinderAPI\NZMartialArtsGymFinderAPI\obj\Debug\netcoreapp3.1\NZMartialArtsGymFinderAPI.AssemblyInfoInputs.cache
 E:\SoftwareDevelopment\C# projects\NZMartialArtsGymFinder\NZMartialArtsGymFinderAPI\NZMartialArtsGymFinderAPI\obj\Debug\netcoreapp3.1\NZMartialArtsGymFinderAPI.AssemblyInfo.cs
 E:\SoftwareDevelopment\C# projects\NZMartialArtsGymFinder\NZMartialArtsGymFinderAPI\NZMartialArtsGymFinderAPI\obj\Debug\netcoreapp3.1\NZMartialArtsGymFinderAPI.csproj.CoreCompileInputs.cache
@@ -142,3 +141,5 @@ E:\SoftwareDevelopment\C# projects\NZMartialArtsGymFinder\NZMartialArtsGymFinder
 E:\SoftwareDevelopment\C# projects\NZMartialArtsGymFinder\NZMartialArtsGymFinderAPI\NZMartialArtsGymFinderAPI\bin\Debug\netcoreapp3.1\runtimes\win\lib\netstandard2.0\System.Security.Cryptography.ProtectedData.dll
 E:\SoftwareDevelopment\C# projects\NZMartialArtsGymFinder\NZMartialArtsGymFinderAPI\NZMartialArtsGymFinderAPI\obj\Debug\netcoreapp3.1\NZMartialArtsGymFinderAPI.MvcApplicationPartsAssemblyInfo.cs
 E:\SoftwareDevelopment\C# projects\NZMartialArtsGymFinder\NZMartialArtsGymFinderAPI\NZMartialArtsGymFinderAPI\obj\Debug\netcoreapp3.1\NZMartialArtsGymFinderAPI.csproj.CopyComplete
+E:\SoftwareDevelopment\C# projects\NZMartialArtsGymFinder\NZMartialArtsGymFinderAPI\NZMartialArtsGymFinderAPI\bin\Debug\netcoreapp3.1\NZMartialArtsGymFinderAPI.xml
+E:\SoftwareDevelopment\C# projects\NZMartialArtsGymFinder\NZMartialArtsGymFinderAPI\NZMartialArtsGymFinderAPI\obj\Debug\netcoreapp3.1\NZMartialArtsGymFinderAPI.csproj.AssemblyReference.cache

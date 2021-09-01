@@ -1,16 +1,17 @@
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.HttpsPolicy;
-using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Logging;
+using Microsoft.Extensions.Options;
 using NZMartialArtsGymFinderAPI.Data;
 using NZMartialArtsGymFinderAPI.Mappers;
 using NZMartialArtsGymFinderAPI.Repositories;
 using NZMartialArtsGymFinderAPI.Repositories.IRepositories;
+using Swashbuckle.AspNetCore.SwaggerGen;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -36,6 +37,9 @@ namespace NZMartialArtsGymFinderAPI
 			services.AddScoped<IRegionRepository , RegionRepository>();
 
 			services.AddAutoMapper(typeof(MartialArtsGymFinderMappings));
+
+			services.AddTransient<IConfigureOptions<SwaggerGenOptions>, ConfigureSwaggerOptions>();
+			services.AddSwaggerGen();
 			services.AddControllers();
 		}
 
@@ -48,7 +52,11 @@ namespace NZMartialArtsGymFinderAPI
 			}
 
 			app.UseHttpsRedirection();
-
+			app.UseSwagger();
+			app.UseSwaggerUI(options => {
+				options.SwaggerEndpoint("/swagger/NZMAGFOpenAPISpec/swagger.json", "NZ Martial Arts Gym Finder API");
+				options.RoutePrefix = "";
+			});
 			app.UseRouting();
 
 			app.UseAuthorization();

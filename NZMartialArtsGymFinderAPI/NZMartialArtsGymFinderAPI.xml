@@ -1,0 +1,21 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>NZMartialArtsGymFinderAPI</name>
+    </assembly>
+    <members>
+        <member name="M:NZMartialArtsGymFinderAPI.Controllers.RegionController.GetAllRegions">
+            <summary>
+            Get list of Regions in NZ
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:NZMartialArtsGymFinderAPI.Controllers.RegionController.GetRegion(System.Int32)">
+            <summary>
+            Get individual Region
+            </summary>
+            <param name="id"> The Id of the Region </param>
+            <returns></returns>
+        </member>
+    </members>
+</doc>
