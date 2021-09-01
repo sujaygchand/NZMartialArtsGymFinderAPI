@@ -9,6 +9,8 @@ using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Logging;
 using NZMartialArtsGymFinderAPI.Data;
 using NZMartialArtsGymFinderAPI.Mappers;
+using NZMartialArtsGymFinderAPI.Repositories;
+using NZMartialArtsGymFinderAPI.Repositories.IRepositories;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -30,6 +32,8 @@ namespace NZMartialArtsGymFinderAPI
 		{
 			services.AddCors();
 			services.AddDbContext<ApplicationDbContext>(options => options.UseSqlServer(Configuration.GetConnectionString("DefaultConnection")));
+
+			services.AddScoped<IRegionRepository , RegionRepository>();
 
 			services.AddAutoMapper(typeof(MartialArtsGymFinderMappings));
 			services.AddControllers();
