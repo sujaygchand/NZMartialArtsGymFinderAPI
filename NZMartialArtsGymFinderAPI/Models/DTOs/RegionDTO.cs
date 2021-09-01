@@ -14,5 +14,7 @@ namespace NZMartialArtsGymFinderAPI.Models.DTOs
 		public string Name { get; set; }
 
 		public string AreaCode { get; set; }
+
+		public byte[] Picture { get; set; }
 	}
 }

@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace NZMartialArtsGymFinderAPI.Models
 {
-	public class RegionDTO
+	public class Region
 	{
 		[Key]
 		public int Id { get; set; }
@@ -15,5 +15,6 @@ namespace NZMartialArtsGymFinderAPI.Models
 		public string Name { get; set; }
 
 		public string AreaCode { get; set; }
+		public byte[] Picture { get; set; }
 	}
 }
