@@ -23,13 +23,13 @@ namespace NZMartialArtsGymFinderAPI.Controllers
 	{
 		private readonly IRegionRepository _regionRepo;
 		private readonly IMapper _mapper;
-		private readonly DbSet<Region> _regions;
+		private readonly DbSet<Region> _regionsDbSet;
 		private readonly ApplicationDbContext _db;
 
 		public RegionController(ApplicationDbContext db, IRegionRepository regionRepo, IMapper mapper)
 		{
 			_db = db ??	throw new Exception("ApplicationDbContext is null");
-			_regions = db.Regions ?? throw new Exception("ApplicationDbContext has no Regions"); ;
+			_regionsDbSet = db.Regions ?? throw new Exception("ApplicationDbContext has no Regions"); ;
 			_regionRepo = regionRepo ?? throw new Exception("IRegionRepository is null");
 			_mapper = mapper ?? throw new Exception("IMapper is null");
 		}
@@ -43,7 +43,7 @@ namespace NZMartialArtsGymFinderAPI.Controllers
 		[ProducesResponseType(StatusCodes.Status404NotFound)]
 		public IActionResult GetAllRegions()
 		{
-			ICollection<Region> regionList = _regionRepo?.GetAll(_regions);
+			ICollection<Region> regionList = _regionRepo?.GetAll(_regionsDbSet);
 
 			if (regionList == null || _mapper == null)
 				return NotFound();
@@ -69,7 +69,7 @@ namespace NZMartialArtsGymFinderAPI.Controllers
 		[ProducesDefaultResponseType]
 		public IActionResult GetRegion(int id)
 		{
-			var region = _regionRepo?.Get(id, _regions);
+			var region = _regionRepo?.Get(id, _regionsDbSet);
 
 			if (region == null || _mapper == null)
 				return NotFound();
@@ -81,7 +81,7 @@ namespace NZMartialArtsGymFinderAPI.Controllers
 		/// <summary>
 		/// Create Region
 		/// </summary>
-		/// <param region = "regionDto"> The Region details </param>
+		/// <param name = "regionDto"> The Region details </param>
 		/// <returns></returns>
 		[HttpPost]
 		[ProducesResponseType(201, Type = typeof(RegionDto))]
@@ -93,7 +93,7 @@ namespace NZMartialArtsGymFinderAPI.Controllers
 			if (_mapper == null || regionDto == null || _regionRepo == null)
 				return BadRequest(ModelState);
 
-			if (_regionRepo.DoesEntryExist(regionDto.Name, _regions))
+			if (_regionRepo.DoesEntryExist(regionDto.Name, _regionsDbSet))
 			{
 				ModelState.AddModelError("", $"{regionDto.Name} Region already exists");
 				return StatusCode(404, ModelState);
@@ -103,7 +103,7 @@ namespace NZMartialArtsGymFinderAPI.Controllers
 
 			Region region = _mapper.Map<Region>(regionDto);
 
-			if(_regionRepo.TryCreateEntry(region, _db, _regions) == false)
+			if(_regionRepo.TryCreateEntry(region, _db, _regionsDbSet) == false)
 			{
 				ModelState.AddModelError("", $"Something went wrong when saving the record {region.Name}");
 				return StatusCode(500, ModelState);
@@ -116,7 +116,7 @@ namespace NZMartialArtsGymFinderAPI.Controllers
 		/// Update Region
 		/// </summary>
 		/// <param name="id"> The Id of the Region </param>
-		/// <param region = "regionDto"> The Region details </param>
+		/// <param name = "regionDto"> The Region details </param>
 		/// <returns></returns>
 		[HttpPatch("{id:int}", Name = nameof(UpdateRegion))]
 		[ProducesResponseType(StatusCodes.Status201Created)]
@@ -135,7 +135,7 @@ namespace NZMartialArtsGymFinderAPI.Controllers
 
 			Region region = _mapper.Map<Region>(regionDto);
 
-			if(_regionRepo.TryUpdateEntry(region, _db, _regions) == false)
+			if(_regionRepo.TryUpdateEntry(region, _db, _regionsDbSet) == false)
 			{
 				ModelState.AddModelError("", $"Something went wrong when updating the record {region.Name}");
 				return StatusCode(500, ModelState);
@@ -159,7 +159,7 @@ namespace NZMartialArtsGymFinderAPI.Controllers
 			if (_regionRepo == null || _mapper == null)
 				return BadRequest(ModelState);
 
-			Region region = _regionRepo.Get(id, _regions);
+			Region region = _regionRepo.Get(id, _regionsDbSet);
 
 			if(region == null)
 			{
@@ -167,7 +167,7 @@ namespace NZMartialArtsGymFinderAPI.Controllers
 				return StatusCode(500, ModelState);
 			}
 
-			if(_regionRepo.TryDeleteEntry(region, _db, _regions) == false)
+			if(_regionRepo.TryDeleteEntry(region, _db, _regionsDbSet) == false)
 			{
 				ModelState.AddModelError("", $"Something went wrong when deleting the record {region.Name}");
 				return StatusCode(500, ModelState);

@@ -4,6 +4,41 @@
         <name>NZMartialArtsGymFinderAPI</name>
     </assembly>
     <members>
+        <member name="M:NZMartialArtsGymFinderAPI.Controllers.MartialArtController.GetAllMartialArts">
+            <summary>
+            Get list of Martial Arts
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:NZMartialArtsGymFinderAPI.Controllers.MartialArtController.GetMartialArt(System.Int32)">
+            <summary>
+            Get individual Martial Art
+            </summary>
+            <param name="id"> The Id of the Martial Art </param>
+            <returns></returns>
+        </member>
+        <member name="M:NZMartialArtsGymFinderAPI.Controllers.MartialArtController.CreateMartialArt(NZMartialArtsGymFinderAPI.Models.DTOs.MartialArtDto)">
+            <summary>
+            Create Martial Art
+            </summary>
+            <param name = "martialArtDto"> The Martial Art details </param>
+            <returns></returns>
+        </member>
+        <member name="M:NZMartialArtsGymFinderAPI.Controllers.MartialArtController.UpdateMartialArt(System.Int32,NZMartialArtsGymFinderAPI.Models.DTOs.MartialArtDto)">
+            <summary>
+            Update Martial Art
+            </summary>
+            <param name="id"> The Id of the Martial Art </param>
+            <param name = "martialArtDto"> The Martial Art details </param>
+            <returns></returns>
+        </member>
+        <member name="M:NZMartialArtsGymFinderAPI.Controllers.MartialArtController.DeleteMartialArt(System.Int32)">
+            <summary>
+            Delete Region
+            </summary>
+            <param name="id"> The Id of the Region </param>
+            <returns></returns>
+        </member>
         <member name="M:NZMartialArtsGymFinderAPI.Controllers.RegionController.GetAllRegions">
             <summary>
             Get list of Regions in NZ
@@ -21,7 +56,7 @@
             <summary>
             Create Region
             </summary>
-            <param region = "regionDto"> The Region details </param>
+            <param name = "regionDto"> The Region details </param>
             <returns></returns>
         </member>
         <member name="M:NZMartialArtsGymFinderAPI.Controllers.RegionController.UpdateRegion(System.Int32,NZMartialArtsGymFinderAPI.Models.DTOs.RegionDto)">
@@ -29,7 +64,7 @@
             Update Region
             </summary>
             <param name="id"> The Id of the Region </param>
-            <param region = "regionDto"> The Region details </param>
+            <param name = "regionDto"> The Region details </param>
             <returns></returns>
         </member>
         <member name="M:NZMartialArtsGymFinderAPI.Controllers.RegionController.DeleteRegion(System.Int32)">
