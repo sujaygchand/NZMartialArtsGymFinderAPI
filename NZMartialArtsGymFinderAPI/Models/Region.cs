@@ -6,14 +6,8 @@ using System.Threading.Tasks;
 
 namespace NZMartialArtsGymFinderAPI.Models
 {
-	public class Region
+	public class Region : BaseModel
 	{
-		[Key]
-		public int Id { get; set; }
-
-		[Required]
-		public string Name { get; set; }
-
 		public string DiallingCode { get; set; }
 		public byte[] Picture { get; set; }
 	}

@@ -4,10 +4,13 @@ using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Threading.Tasks;
 
-namespace NZMartialArtsGymFinderAPI.Models
+namespace NZMartialArtsGymFinderAPI.Models.DTOs
 {
-	public class MartialArt : BaseModel
+	public class BaseModelDto
 	{
-		public string FriendlyName { get; set; }
+		public int Id { get; set; }
+
+		[Required]
+		public string Name { get; set; }
 	}
 }

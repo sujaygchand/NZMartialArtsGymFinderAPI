@@ -8,14 +8,8 @@ using System.Threading.Tasks;
 
 namespace NZMartialArtsGymFinderAPI.Models
 {
-	public class Gym
+	public class Gym : BaseModel
 	{
-		[Key]
-		public int Id { get; set; }
-
-		[Required]
-		public string Name { get; set; }
-
 		[Required]
 		public List<MartialArt> MartialArtsTaught { get; set; }
 

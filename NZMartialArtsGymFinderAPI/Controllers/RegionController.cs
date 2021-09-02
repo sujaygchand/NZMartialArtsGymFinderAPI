@@ -2,6 +2,8 @@
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
+using NZMartialArtsGymFinderAPI.Data;
 using NZMartialArtsGymFinderAPI.Models;
 using NZMartialArtsGymFinderAPI.Models.DTOs;
 using NZMartialArtsGymFinderAPI.Repositories.IRepositories;
@@ -21,9 +23,13 @@ namespace NZMartialArtsGymFinderAPI.Controllers
 	{
 		private readonly IRegionRepository _regionRepo;
 		private readonly IMapper _mapper;
+		private readonly DbSet<Region> _regions;
+		private readonly ApplicationDbContext _db;
 
-		public RegionController(IRegionRepository regionRepo, IMapper mapper)
+		public RegionController(ApplicationDbContext db, IRegionRepository regionRepo, IMapper mapper)
 		{
+			_db = db ??	throw new Exception("ApplicationDbContext is null");
+			_regions = db.Regions ?? throw new Exception("ApplicationDbContext has no Regions"); ;
 			_regionRepo = regionRepo ?? throw new Exception("IRegionRepository is null");
 			_mapper = mapper ?? throw new Exception("IMapper is null");
 		}
@@ -37,7 +43,7 @@ namespace NZMartialArtsGymFinderAPI.Controllers
 		[ProducesResponseType(StatusCodes.Status404NotFound)]
 		public IActionResult GetAllRegions()
 		{
-			ICollection<Region> regionList = _regionRepo?.GetAllRegions();
+			ICollection<Region> regionList = _regionRepo?.GetAll(_regions);
 
 			if (regionList == null || _mapper == null)
 				return NotFound();
@@ -63,7 +69,7 @@ namespace NZMartialArtsGymFinderAPI.Controllers
 		[ProducesDefaultResponseType]
 		public IActionResult GetRegion(int id)
 		{
-			var region = _regionRepo?.GetRegion(id);
+			var region = _regionRepo?.Get(id, _regions);
 
 			if (region == null || _mapper == null)
 				return NotFound();
@@ -87,7 +93,7 @@ namespace NZMartialArtsGymFinderAPI.Controllers
 			if (_mapper == null || regionDto == null || _regionRepo == null)
 				return BadRequest(ModelState);
 
-			if (_regionRepo.DoesRegionExist(regionDto.Name))
+			if (_regionRepo.DoesEntryExist(regionDto.Name, _regions))
 			{
 				ModelState.AddModelError("", $"{regionDto.Name} Region already exists");
 				return StatusCode(404, ModelState);
@@ -97,7 +103,7 @@ namespace NZMartialArtsGymFinderAPI.Controllers
 
 			Region region = _mapper.Map<Region>(regionDto);
 
-			if(_regionRepo.TryCreateRegion(region) == false)
+			if(_regionRepo.TryCreateEntry(region, _db, _regions) == false)
 			{
 				ModelState.AddModelError("", $"Something went wrong when saving the record {region.Name}");
 				return StatusCode(500, ModelState);
@@ -129,7 +135,7 @@ namespace NZMartialArtsGymFinderAPI.Controllers
 
 			Region region = _mapper.Map<Region>(regionDto);
 
-			if(_regionRepo.TryUpdateRegion(region) == false)
+			if(_regionRepo.TryUpdateEntry(region, _db, _regions) == false)
 			{
 				ModelState.AddModelError("", $"Something went wrong when updating the record {region.Name}");
 				return StatusCode(500, ModelState);
@@ -153,7 +159,7 @@ namespace NZMartialArtsGymFinderAPI.Controllers
 			if (_regionRepo == null || _mapper == null)
 				return BadRequest(ModelState);
 
-			Region region = _regionRepo.GetRegion(id);
+			Region region = _regionRepo.Get(id, _regions);
 
 			if(region == null)
 			{
@@ -161,7 +167,7 @@ namespace NZMartialArtsGymFinderAPI.Controllers
 				return StatusCode(500, ModelState);
 			}
 
-			if(_regionRepo.TryDeleteRegion(region) == false)
+			if(_regionRepo.TryDeleteEntry(region, _db, _regions) == false)
 			{
 				ModelState.AddModelError("", $"Something went wrong when deleting the record {region.Name}");
 				return StatusCode(500, ModelState);

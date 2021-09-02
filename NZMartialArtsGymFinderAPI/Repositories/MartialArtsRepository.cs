@@ -9,7 +9,7 @@ using NZMartialArtsGymFinderAPI.Utilities;
 
 namespace NZMartialArtsGymFinderAPI.Repositories
 {
-	public class MartialArtsRepository : IMartialArtsRepository
+	/*public class MartialArtsRepository : IMartialArtsRepository
 	{
 		private readonly ApplicationDbContext _db;
 
@@ -55,5 +55,5 @@ namespace NZMartialArtsGymFinderAPI.Repositories
 			_db.MartialArts.Update(martialArt);
 			return MartialArtsGymFinderFunctions.Save(_db);
 		}
-	}
+	}*/
 }

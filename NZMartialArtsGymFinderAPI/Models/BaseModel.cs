@@ -6,8 +6,12 @@ using System.Threading.Tasks;
 
 namespace NZMartialArtsGymFinderAPI.Models
 {
-	public class MartialArt : BaseModel
+	public class BaseModel
 	{
-		public string FriendlyName { get; set; }
+		[Key]
+		public int Id { get; set; }
+
+		[Required]
+		public string Name { get; set; }
 	}
 }

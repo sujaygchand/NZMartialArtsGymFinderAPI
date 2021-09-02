@@ -6,13 +6,8 @@ using System.Threading.Tasks;
 
 namespace NZMartialArtsGymFinderAPI.Models.DTOs
 {
-	public class GymDto
+	public class GymDto : BaseModel
 	{
-		public int Id { get; set; }
-
-		[Required]
-		public string Name { get; set; }
-
 		[Required]
 		public List<MartialArt> MartialArtsTaught { get; set; }
 

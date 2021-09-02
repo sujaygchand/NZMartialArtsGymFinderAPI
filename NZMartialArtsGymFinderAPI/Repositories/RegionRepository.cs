@@ -4,14 +4,15 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using NZMartialArtsGymFinderAPI.Repositories.IRepositories;
+using NZMartialArtsGymFinderAPI.Repositories.Generic;
 using NZMartialArtsGymFinderAPI.Models;
 using NZMartialArtsGymFinderAPI.Utilities;
 
 namespace NZMartialArtsGymFinderAPI.Repositories
 {
-	public class RegionRepository : IRegionRepository
+	public class RegionRepository : GenericModelRepository<Region>, IRegionRepository
 	{
-		private readonly ApplicationDbContext _db;
+		/*private readonly ApplicationDbContext _db;
 
 		public RegionRepository(ApplicationDbContext db)
 		{
@@ -54,6 +55,6 @@ namespace NZMartialArtsGymFinderAPI.Repositories
 		{
 			_db.Regions.Update(region);
 			return MartialArtsGymFinderFunctions.Save(_db);
-		}
+		}*/
 	}
 }
