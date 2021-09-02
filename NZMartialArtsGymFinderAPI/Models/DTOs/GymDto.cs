@@ -9,7 +9,7 @@ namespace NZMartialArtsGymFinderAPI.Models.DTOs
 	public class GymDto : BaseModel
 	{
 		[Required]
-		public List<MartialArt> MartialArtsTaught { get; set; }
+		public virtual ICollection<IdCollection> MartialArtIds { get; set; }
 
 		public string Website { get; set; }
 

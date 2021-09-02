@@ -3,15 +3,17 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using NZMartialArtsGymFinderAPI.Data;
 
 namespace NZMartialArtsGymFinderAPI.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    partial class ApplicationDbContextModelSnapshot : ModelSnapshot
+    [Migration("20210902080356_RemoveMartialIds")]
+    partial class RemoveMartialIds
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -70,12 +72,7 @@ namespace NZMartialArtsGymFinderAPI.Migrations
                         .HasColumnType("int")
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
-                    b.Property<int?>("GymId")
-                        .HasColumnType("int");
-
                     b.HasKey("Id");
-
-                    b.HasIndex("GymId");
 
                     b.ToTable("IdCollections");
                 });
@@ -151,18 +148,6 @@ namespace NZMartialArtsGymFinderAPI.Migrations
                         .IsRequired();
 
                     b.Navigation("Region");
-                });
-
-            modelBuilder.Entity("NZMartialArtsGymFinderAPI.Models.IdCollection", b =>
-                {
-                    b.HasOne("NZMartialArtsGymFinderAPI.Models.Gym", null)
-                        .WithMany("MartialArtIds")
-                        .HasForeignKey("GymId");
-                });
-
-            modelBuilder.Entity("NZMartialArtsGymFinderAPI.Models.Gym", b =>
-                {
-                    b.Navigation("MartialArtIds");
                 });
 #pragma warning restore 612, 618
         }

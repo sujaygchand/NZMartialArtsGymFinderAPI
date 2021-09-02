@@ -4,6 +4,41 @@
         <name>NZMartialArtsGymFinderAPI</name>
     </assembly>
     <members>
+        <member name="M:NZMartialArtsGymFinderAPI.Controllers.GymController.GetAllGyms">
+            <summary>
+            Get list of Gyms
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:NZMartialArtsGymFinderAPI.Controllers.GymController.GetGym(System.Int32)">
+            <summary>
+            Get individual Gym
+            </summary>
+            <param name="id"> The Id of the Gym </param>
+            <returns></returns>
+        </member>
+        <member name="M:NZMartialArtsGymFinderAPI.Controllers.GymController.CreateMartialArt(NZMartialArtsGymFinderAPI.Models.DTOs.GymCreateDto)">
+            <summary>
+            Create Gym
+            </summary>
+            <param name = "gymDto"> The Gym details </param>
+            <returns></returns>
+        </member>
+        <member name="M:NZMartialArtsGymFinderAPI.Controllers.GymController.UpdateGym(System.Int32,NZMartialArtsGymFinderAPI.Models.DTOs.GymUpdateDto)">
+            <summary>
+            Update Gym
+            </summary>
+            <param name="id"> The Id of the Gym </param>
+            <param name = "gymDto"> The Gym details </param>
+            <returns></returns>
+        </member>
+        <member name="M:NZMartialArtsGymFinderAPI.Controllers.GymController.DeleteGym(System.Int32)">
+            <summary>
+            Delete Gym
+            </summary>
+            <param name="id"> The Id of the Gym </param>
+            <returns></returns>
+        </member>
         <member name="M:NZMartialArtsGymFinderAPI.Controllers.MartialArtController.GetAllMartialArts">
             <summary>
             Get list of Martial Arts

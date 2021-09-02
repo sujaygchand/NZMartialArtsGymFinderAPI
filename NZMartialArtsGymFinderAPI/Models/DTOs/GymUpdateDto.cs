@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Newtonsoft.Json;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.Linq;
@@ -9,8 +10,8 @@ namespace NZMartialArtsGymFinderAPI.Models.DTOs
 	public class GymUpdateDto : BaseModel
 	{
 		[Required]
-		public IEnumerable<MartialArt> MartialArtsTaught { get; set; }
-
+		public virtual ICollection<IdCollection> MartialArtIds { get; set; }
+	
 		public string Website { get; set; }
 
 		public byte[] Picture { get; set; }

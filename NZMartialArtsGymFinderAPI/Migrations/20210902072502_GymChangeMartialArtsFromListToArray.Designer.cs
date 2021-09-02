@@ -3,15 +3,17 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using NZMartialArtsGymFinderAPI.Data;
 
 namespace NZMartialArtsGymFinderAPI.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    partial class ApplicationDbContextModelSnapshot : ModelSnapshot
+    [Migration("20210902072502_GymChangeMartialArtsFromListToArray")]
+    partial class GymChangeMartialArtsFromListToArray
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -63,23 +65,6 @@ namespace NZMartialArtsGymFinderAPI.Migrations
                     b.ToTable("Gyms");
                 });
 
-            modelBuilder.Entity("NZMartialArtsGymFinderAPI.Models.IdCollection", b =>
-                {
-                    b.Property<int>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int")
-                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
-
-                    b.Property<int?>("GymId")
-                        .HasColumnType("int");
-
-                    b.HasKey("Id");
-
-                    b.HasIndex("GymId");
-
-                    b.ToTable("IdCollections");
-                });
-
             modelBuilder.Entity("NZMartialArtsGymFinderAPI.Models.MartialArt", b =>
                 {
                     b.Property<int>("Id")
@@ -90,11 +75,16 @@ namespace NZMartialArtsGymFinderAPI.Migrations
                     b.Property<string>("FriendlyName")
                         .HasColumnType("nvarchar(max)");
 
+                    b.Property<int?>("GymId")
+                        .HasColumnType("int");
+
                     b.Property<string>("Name")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
                     b.HasKey("Id");
+
+                    b.HasIndex("GymId");
 
                     b.ToTable("MartialArts");
                 });
@@ -153,16 +143,16 @@ namespace NZMartialArtsGymFinderAPI.Migrations
                     b.Navigation("Region");
                 });
 
-            modelBuilder.Entity("NZMartialArtsGymFinderAPI.Models.IdCollection", b =>
+            modelBuilder.Entity("NZMartialArtsGymFinderAPI.Models.MartialArt", b =>
                 {
                     b.HasOne("NZMartialArtsGymFinderAPI.Models.Gym", null)
-                        .WithMany("MartialArtIds")
+                        .WithMany("MartialArtsTaught")
                         .HasForeignKey("GymId");
                 });
 
             modelBuilder.Entity("NZMartialArtsGymFinderAPI.Models.Gym", b =>
                 {
-                    b.Navigation("MartialArtIds");
+                    b.Navigation("MartialArtsTaught");
                 });
 #pragma warning restore 612, 618
         }
