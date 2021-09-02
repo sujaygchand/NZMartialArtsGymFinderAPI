@@ -9,12 +9,5 @@ namespace NZMartialArtsGymFinderAPI.Repositories.IRepositories
 {
 	public interface IMartialArtsRepository : IGenericModelRepository<MartialArt>
 	{
-		/*ICollection<MartialArt> GetAllMartialArts();
-		MartialArt GetMartialArt(int id);
-		bool DoesMartialArtExist(int id);
-		bool DoesMartialArtExist(string name);
-		bool TryCreateMartialArt(MartialArt martialArt);
-		bool TryUpdateMartialArt(MartialArt martialArt);
-		bool TryDeleteMartialArt(MartialArt martialArt);*/
 	}
 }

@@ -35,8 +35,8 @@ namespace NZMartialArtsGymFinderAPI
 			services.AddDbContext<ApplicationDbContext>(options => options.UseSqlServer(Configuration.GetConnectionString("DefaultConnection")));
 
 			services.AddScoped<IRegionRepository , RegionRepository>();
-			/*services.AddScoped<IMartialArtsRepository, MartialArtsRepository>();
-			services.AddScoped<IGymRepository, GymRepository>();*/
+			services.AddScoped<IMartialArtsRepository, MartialArtsRepository>();
+			services.AddScoped<IGymRepository, GymRepository>();
 
 			services.AddAutoMapper(typeof(MartialArtsGymFinderMappings));
 
