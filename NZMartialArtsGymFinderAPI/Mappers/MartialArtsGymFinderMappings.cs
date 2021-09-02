@@ -13,6 +13,7 @@ namespace NZMartialArtsGymFinderAPI.Mappers
 		public MartialArtsGymFinderMappings()
 		{
 			CreateMap<Region, RegionDto>().ReverseMap();
+			CreateMap<MartialArt, MartialArtDto>().ReverseMap();
 			CreateMap<Gym, GymDto>().ReverseMap();
 			CreateMap<Gym, GymCreateDto>().ReverseMap();
 			CreateMap<Gym, GymUpdateDto>().ReverseMap();
