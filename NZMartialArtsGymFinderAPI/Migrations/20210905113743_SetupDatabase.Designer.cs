@@ -10,8 +10,8 @@ using NZMartialArtsGymFinderAPI.Data;
 namespace NZMartialArtsGymFinderAPI.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    [Migration("20210902085219_IdsUseICollections")]
-    partial class IdsUseICollections
+    [Migration("20210905113743_SetupDatabase")]
+    partial class SetupDatabase
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -65,23 +65,6 @@ namespace NZMartialArtsGymFinderAPI.Migrations
                     b.ToTable("Gyms");
                 });
 
-            modelBuilder.Entity("NZMartialArtsGymFinderAPI.Models.IdCollection", b =>
-                {
-                    b.Property<int>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int")
-                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
-
-                    b.Property<int?>("GymId")
-                        .HasColumnType("int");
-
-                    b.HasKey("Id");
-
-                    b.HasIndex("GymId");
-
-                    b.ToTable("IdCollections");
-                });
-
             modelBuilder.Entity("NZMartialArtsGymFinderAPI.Models.MartialArt", b =>
                 {
                     b.Property<int>("Id")
@@ -99,6 +82,23 @@ namespace NZMartialArtsGymFinderAPI.Migrations
                     b.HasKey("Id");
 
                     b.ToTable("MartialArts");
+                });
+
+            modelBuilder.Entity("NZMartialArtsGymFinderAPI.Models.MartialArtsKey", b =>
+                {
+                    b.Property<int>("MartialArtId")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int")
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+                    b.Property<int?>("GymId")
+                        .HasColumnType("int");
+
+                    b.HasKey("MartialArtId");
+
+                    b.HasIndex("GymId");
+
+                    b.ToTable("MartialArtsKey");
                 });
 
             modelBuilder.Entity("NZMartialArtsGymFinderAPI.Models.Region", b =>
@@ -155,7 +155,7 @@ namespace NZMartialArtsGymFinderAPI.Migrations
                     b.Navigation("Region");
                 });
 
-            modelBuilder.Entity("NZMartialArtsGymFinderAPI.Models.IdCollection", b =>
+            modelBuilder.Entity("NZMartialArtsGymFinderAPI.Models.MartialArtsKey", b =>
                 {
                     b.HasOne("NZMartialArtsGymFinderAPI.Models.Gym", null)
                         .WithMany("MartialArtIds")

@@ -11,8 +11,9 @@ namespace NZMartialArtsGymFinderAPI.Models
 {
 	public class Gym : BaseModel
 	{
+
 		[Required]
-		public virtual ICollection<IdCollection> MartialArtIds { get; set; }
+		public string MartialArtIds { get; set; }
 
 		public string Website { get; set; }
 

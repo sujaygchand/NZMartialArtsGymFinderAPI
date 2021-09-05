@@ -2,7 +2,7 @@
 
 namespace NZMartialArtsGymFinderAPI.Migrations
 {
-    public partial class AddedABaseClassForModels : Migration
+    public partial class SetupDatabase : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {

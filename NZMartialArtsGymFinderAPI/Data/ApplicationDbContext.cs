@@ -17,7 +17,12 @@ namespace NZMartialArtsGymFinderAPI.Data
 		public DbSet<Region> Regions { get; set; }
 		public DbSet<Gym> Gyms { get; set; }
 		public DbSet<MartialArt> MartialArts { get; set; }
-		public DbSet<IdCollection> IdCollections { get; set; }
 		public DbSet<User> Users { get; set; }
+
+		protected override void OnModelCreating(ModelBuilder modelBuilder)
+		{
+			//modelBuilder.Entity<Gym>().Property(k => k.MartialArtIds).UseIdentityColumn();
+			base.OnModelCreating(modelBuilder);
+		}
 	}
 }

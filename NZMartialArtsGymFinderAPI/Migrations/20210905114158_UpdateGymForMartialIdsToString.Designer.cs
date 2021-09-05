@@ -10,8 +10,8 @@ using NZMartialArtsGymFinderAPI.Data;
 namespace NZMartialArtsGymFinderAPI.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    [Migration("20210902112716_UndoMartialsIdsAsArray")]
-    partial class UndoMartialsIdsAsArray
+    [Migration("20210905114158_UpdateGymForMartialIdsToString")]
+    partial class UpdateGymForMartialIdsToString
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -36,6 +36,10 @@ namespace NZMartialArtsGymFinderAPI.Migrations
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("LandlineNumber")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("MartialArtIds")
+                        .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("MobileNumber")
@@ -63,23 +67,6 @@ namespace NZMartialArtsGymFinderAPI.Migrations
                     b.HasIndex("RegionId");
 
                     b.ToTable("Gyms");
-                });
-
-            modelBuilder.Entity("NZMartialArtsGymFinderAPI.Models.IdCollection", b =>
-                {
-                    b.Property<int>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int")
-                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
-
-                    b.Property<int?>("GymId")
-                        .HasColumnType("int");
-
-                    b.HasKey("Id");
-
-                    b.HasIndex("GymId");
-
-                    b.ToTable("IdCollections");
                 });
 
             modelBuilder.Entity("NZMartialArtsGymFinderAPI.Models.MartialArt", b =>
@@ -153,18 +140,6 @@ namespace NZMartialArtsGymFinderAPI.Migrations
                         .IsRequired();
 
                     b.Navigation("Region");
-                });
-
-            modelBuilder.Entity("NZMartialArtsGymFinderAPI.Models.IdCollection", b =>
-                {
-                    b.HasOne("NZMartialArtsGymFinderAPI.Models.Gym", null)
-                        .WithMany("MartialArtIds")
-                        .HasForeignKey("GymId");
-                });
-
-            modelBuilder.Entity("NZMartialArtsGymFinderAPI.Models.Gym", b =>
-                {
-                    b.Navigation("MartialArtIds");
                 });
 #pragma warning restore 612, 618
         }
