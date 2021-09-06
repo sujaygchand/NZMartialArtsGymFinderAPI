@@ -109,5 +109,18 @@
             <param name="id"> The Id of the Region </param>
             <returns></returns>
         </member>
+        <member name="M:NZMartialArtsGymFinderAPI.Controllers.UserController.GetAllUsers">
+            <summary>
+            Get list of Users.
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:NZMartialArtsGymFinderAPI.Controllers.UserController.GetUser(System.Int32)">
+            <summary>
+            Get individual User
+            </summary>
+            <param name="id"> The Id of the User </param>
+            <returns></returns>
+        </member>
     </members>
 </doc>

@@ -14,6 +14,7 @@ namespace NZMartialArtsGymFinderAPI.Mappers
 		{
 			CreateMap<Region, RegionDto>().ReverseMap();
 			CreateMap<MartialArt, MartialArtDto>().ReverseMap();
+			CreateMap<User, UserDto>().ReverseMap();
 			CreateMap<Gym, GymDto>().ReverseMap();
 			CreateMap<Gym, GymCreateDto>().ReverseMap();
 			CreateMap<Gym, GymUpdateDto>().ReverseMap();
