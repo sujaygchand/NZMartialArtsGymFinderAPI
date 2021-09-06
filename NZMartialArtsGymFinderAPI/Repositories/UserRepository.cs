@@ -64,7 +64,7 @@ namespace NZMartialArtsGymFinderAPI.Repositories
 			if (_db.Users == null)
 				return null;
 
-			return _db.Users.Include(k => k.Username).FirstOrDefault(k => k.Id == id);
+			return _db.Users.FirstOrDefault(k => k.Id == id);
 		}
 
 		public bool IsUniqueUser(string username)
