@@ -1,7 +1,9 @@
-﻿using Microsoft.IdentityModel.Tokens;
+﻿using Microsoft.EntityFrameworkCore;
+using Microsoft.IdentityModel.Tokens;
 using NZMartialArtsGymFinderAPI.Data;
 using NZMartialArtsGymFinderAPI.Models;
 using NZMartialArtsGymFinderAPI.Repositories.IRepositories;
+using NZMartialArtsGymFinderAPI.Utilities;
 using ParkyAPI;
 using System;
 using System.Collections.Generic;
@@ -52,6 +54,19 @@ namespace NZMartialArtsGymFinderAPI.Repositories
 			return user;
 		}
 
+		public ICollection<User> GetAllUsers()
+		{
+			return _db.Users.OrderBy(k => k.Id).ToList();
+		}
+
+		public User GetUser(int id)
+		{
+			if (_db.Users == null)
+				return null;
+
+			return _db.Users.Include(k => k.Username).FirstOrDefault(k => k.Id == id);
+		}
+
 		public bool IsUniqueUser(string username)
 		{
 			var user = _db.Users.SingleOrDefault(k => k.Username == username);
@@ -65,13 +80,19 @@ namespace NZMartialArtsGymFinderAPI.Repositories
 			{
 				Username = authenticationModel.Username,
 				Password = authenticationModel.Password,
-				Role = string.IsNullOrWhiteSpace(authenticationModel.Role) ? "Standard" : authenticationModel.Role,
+				Role = string.IsNullOrWhiteSpace(authenticationModel.Role) ? "standard" : authenticationModel.Role,
 			};
 
 			_db.Users.Add(user);
 			_db.SaveChanges();
 			user.Password = string.Empty;   // Hides the password from being shown on response
 			return user;
+		}
+
+		public bool TryDeleteUser(User user)
+		{
+			_db.Users.Remove(user);
+			return MartialArtsGymFinderFunctions.Save(_db);
 		}
 	}
 }
