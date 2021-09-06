@@ -10,6 +10,6 @@ namespace NZMartialArtsGymFinderAPI.Repositories.IRepositories
 	{
 		bool IsUniqueUser(string username);
 		User Authenticate(string username, string password);
-		User Register(string username, string password, string role = "");
+		User Register(AuthenticationModel authenticationModel);
 	}
 }

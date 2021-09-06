@@ -59,13 +59,13 @@ namespace NZMartialArtsGymFinderAPI.Repositories
 			return user == null;
 		}
 
-		public User Register(string username, string password, string role = "")
+		public User Register(AuthenticationModel authenticationModel)
 		{
 			User user = new User()
 			{
-				Username = username,
-				Password = password,
-				Role = string.IsNullOrWhiteSpace(role) ? "Standard" : role,
+				Username = authenticationModel.Username,
+				Password = authenticationModel.Password,
+				Role = string.IsNullOrWhiteSpace(authenticationModel.Role) ? "Standard" : authenticationModel.Role,
 			};
 
 			_db.Users.Add(user);

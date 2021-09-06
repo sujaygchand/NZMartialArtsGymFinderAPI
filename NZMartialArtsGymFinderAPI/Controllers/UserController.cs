@@ -34,5 +34,22 @@ namespace NZMartialArtsGymFinderAPI.Controllers
 
 			return Ok();
 		}
+
+		[AllowAnonymous]
+		[HttpPost("register")]
+		public IActionResult Register([FromBody] AuthenticationModel model)
+		{
+			bool isUniqueUser = _userRepo.IsUniqueUser(model.Username);
+
+			if (!isUniqueUser)
+				return BadRequest(new { message = "Username already exists" });
+
+			var user = _userRepo.Register(model);
+
+			if (user == null)
+				return BadRequest(new { message = "Error while registering" });
+
+			return Ok();
+		}
 	}
 }
