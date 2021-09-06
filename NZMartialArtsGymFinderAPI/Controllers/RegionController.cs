@@ -88,6 +88,7 @@ namespace NZMartialArtsGymFinderAPI.Controllers
 		[ProducesResponseType(StatusCodes.Status201Created)]
 		[ProducesResponseType(StatusCodes.Status404NotFound)]
 		[ProducesResponseType(StatusCodes.Status500InternalServerError)]
+		[Authorize(Roles = "admin")]
 		public IActionResult CreateRegion([FromBody] RegionDto regionDto)
 		{
 			if (_mapper == null || regionDto == null || _regionRepo == null)
@@ -122,6 +123,7 @@ namespace NZMartialArtsGymFinderAPI.Controllers
 		[ProducesResponseType(StatusCodes.Status201Created)]
 		[ProducesResponseType(StatusCodes.Status404NotFound)]
 		[ProducesResponseType(StatusCodes.Status500InternalServerError)]
+		[Authorize(Roles = "admin")]
 		public IActionResult UpdateRegion(int id, [FromBody] RegionDto regionDto)
 		{
 			if (regionDto == null || _regionRepo == null || _mapper == null)
@@ -154,6 +156,7 @@ namespace NZMartialArtsGymFinderAPI.Controllers
 		[ProducesResponseType(StatusCodes.Status404NotFound)]
 		[ProducesResponseType(StatusCodes.Status409Conflict)]
 		[ProducesResponseType(StatusCodes.Status500InternalServerError)]
+		[Authorize(Roles = "admin")]
 		public IActionResult DeleteRegion(int id)
 		{
 			if (_regionRepo == null || _mapper == null)
