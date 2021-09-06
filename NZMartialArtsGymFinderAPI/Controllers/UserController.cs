@@ -85,7 +85,7 @@ namespace NZMartialArtsGymFinderAPI.Controllers
 		/// <param name="id"> The Id of the User </param>
 		/// <returns></returns>
 		[HttpGet("{id:int}", Name = nameof(GetUser))]
-		[ProducesResponseType(StatusCodes.Status200OK, Type = typeof(UserDto))]
+		[ProducesResponseType(StatusCodes.Status200OK, Type = typeof(User))]
 		[ProducesResponseType(StatusCodes.Status404NotFound)]
 		[ProducesDefaultResponseType]
 		[Authorize(Roles = "admin")]
@@ -96,8 +96,8 @@ namespace NZMartialArtsGymFinderAPI.Controllers
 			if (user == null)
 				return NotFound();
 
-			UserDto userDto = _mapper.Map<UserDto>(user);
-			return Ok(userDto);
+			//userDto = _mapper.Map<UserDto>(user);
+			return Ok(user);
 		}
 
 		[HttpDelete("{id:int}", Name = nameof(DeleteUser))]

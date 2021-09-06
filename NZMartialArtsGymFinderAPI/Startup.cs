@@ -69,7 +69,7 @@ namespace NZMartialArtsGymFinderAPI
 					IssuerSigningKey = new SymmetricSecurityKey(appKey),
 					ValidateIssuerSigningKey = true,
 					ValidateIssuer = false,
-					ValidateAudience = true
+					ValidateAudience = false
 				};
 			});
 
