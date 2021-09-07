@@ -10,6 +10,7 @@ using System.Collections.Generic;
 using System.IdentityModel.Tokens.Jwt;
 using System.Linq;
 using System.Security.Claims;
+using System.Security.Cryptography;
 using System.Text;
 using System.Threading.Tasks;
 
@@ -30,10 +31,13 @@ namespace NZMartialArtsGymFinderAPI.Repositories
 
 		public User Authenticate(string username, string password)
 		{
-			var user = _db.Users.SingleOrDefault(k => k.Username == username ); //&& k.Password == password
+			var user = _db.Users.SingleOrDefault(k => k.Username == username );
 
 			// User not found
 			if (user == null)
+				return null;
+
+			if (!DoesPasswordMatch(password, user.Password, user.PasswordKey))
 				return null;
 
 			var tokenHandler = new JwtSecurityTokenHandler();
@@ -50,8 +54,29 @@ namespace NZMartialArtsGymFinderAPI.Repositories
 
 			var token = tokenHandler.CreateToken(tokenDescriptor);
 			user.Token = tokenHandler.WriteToken(token);
-			//user.Password = string.Empty;
 			return user;
+		}
+
+		public bool DoesPasswordMatch(string passwordText, byte[] passwordBytes, byte[] passwordKey)
+		{
+			using(var hmac = new HMACSHA512(passwordKey))
+			{
+				var passwordHash = hmac.ComputeHash(Encoding.UTF8.GetBytes(passwordText));
+
+				int passwordHashLength = passwordHash.Length;
+
+				if (passwordHashLength != passwordBytes.Length)
+					return false;
+
+				for (int i = 0; i < passwordHashLength; i++)
+				{
+					if (passwordBytes[i] != passwordHash[i])
+						return false;
+				}
+			}
+
+
+			return true;
 		}
 
 		public ICollection<User> GetAllUsers()
@@ -76,16 +101,25 @@ namespace NZMartialArtsGymFinderAPI.Repositories
 
 		public User Register(AuthenticationModel authenticationModel)
 		{
+			byte[] passwordHash, passwordKey;
+
+			using(var hmac = new HMACSHA512())
+			{
+				passwordKey = hmac.Key;
+				passwordHash = hmac.ComputeHash(Encoding.UTF8.GetBytes(authenticationModel.Password));
+			}
+
 			User user = new User()
 			{
 				Username = authenticationModel.Username,
-				//Password = authenticationModel.Password,
+				Password = passwordHash,
+				PasswordKey = passwordKey,
 				Role = string.IsNullOrWhiteSpace(authenticationModel.Role) ? "standard" : authenticationModel.Role,
 			};
 
 			_db.Users.Add(user);
 			_db.SaveChanges();
-			//user.Password = string.Empty;   // Hides the password from being shown on response
+			user.Password = null;   // Hides the password from being shown on response
 			return user;
 		}
 
