@@ -30,7 +30,7 @@ namespace NZMartialArtsGymFinderAPI.Repositories
 
 		public User Authenticate(string username, string password)
 		{
-			var user = _db.Users.SingleOrDefault(k => k.Username == username && k.Password == password);
+			var user = _db.Users.SingleOrDefault(k => k.Username == username ); //&& k.Password == password
 
 			// User not found
 			if (user == null)
@@ -50,7 +50,7 @@ namespace NZMartialArtsGymFinderAPI.Repositories
 
 			var token = tokenHandler.CreateToken(tokenDescriptor);
 			user.Token = tokenHandler.WriteToken(token);
-			user.Password = string.Empty;
+			//user.Password = string.Empty;
 			return user;
 		}
 
@@ -79,13 +79,13 @@ namespace NZMartialArtsGymFinderAPI.Repositories
 			User user = new User()
 			{
 				Username = authenticationModel.Username,
-				Password = authenticationModel.Password,
+				//Password = authenticationModel.Password,
 				Role = string.IsNullOrWhiteSpace(authenticationModel.Role) ? "standard" : authenticationModel.Role,
 			};
 
 			_db.Users.Add(user);
 			_db.SaveChanges();
-			user.Password = string.Empty;   // Hides the password from being shown on response
+			//user.Password = string.Empty;   // Hides the password from being shown on response
 			return user;
 		}
 
