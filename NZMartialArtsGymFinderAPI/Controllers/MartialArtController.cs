@@ -88,7 +88,7 @@ namespace NZMartialArtsGymFinderAPI.Controllers
 		[ProducesResponseType(StatusCodes.Status201Created)]
 		[ProducesResponseType(StatusCodes.Status404NotFound)]
 		[ProducesResponseType(StatusCodes.Status500InternalServerError)]
-		[Authorize(Roles = "admin")]
+		[Authorize(Roles = "admin, Admin")]
 		public IActionResult CreateMartialArt([FromBody] MartialArtDto martialArtDto)
 		{
 			if (_mapper == null || martialArtDto == null || _martialArtsRepo == null)
@@ -123,7 +123,7 @@ namespace NZMartialArtsGymFinderAPI.Controllers
 		[ProducesResponseType(StatusCodes.Status201Created)]
 		[ProducesResponseType(StatusCodes.Status404NotFound)]
 		[ProducesResponseType(StatusCodes.Status500InternalServerError)]
-		[Authorize(Roles = "admin")]
+		[Authorize(Roles = "admin, Admin")]
 		public IActionResult UpdateMartialArt(int id, [FromBody] MartialArtDto martialArtDto)
 		{
 			if (martialArtDto == null || _martialArtsRepo == null || _mapper == null)
@@ -156,7 +156,7 @@ namespace NZMartialArtsGymFinderAPI.Controllers
 		[ProducesResponseType(StatusCodes.Status404NotFound)]
 		[ProducesResponseType(StatusCodes.Status409Conflict)]
 		[ProducesResponseType(StatusCodes.Status500InternalServerError)]
-		[Authorize(Roles = "admin")]
+		[Authorize(Roles = "admin, Admin")]
 		public IActionResult DeleteMartialArt(int id)
 		{
 			if (_martialArtsRepo == null || _mapper == null)

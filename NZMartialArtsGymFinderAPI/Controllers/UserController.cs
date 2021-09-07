@@ -63,7 +63,6 @@ namespace NZMartialArtsGymFinderAPI.Controllers
 		/// <returns></returns>
 		[HttpGet]
 		[ProducesResponseType(200, Type = typeof(List<UserDto>))]
-		//[Authorize(Roles = "admin")]
 		public IActionResult GetAllUsers()
 		{
 			ICollection<User> userList = _userRepo.GetAllUsers();
@@ -88,7 +87,7 @@ namespace NZMartialArtsGymFinderAPI.Controllers
 		[ProducesResponseType(StatusCodes.Status200OK, Type = typeof(User))]
 		[ProducesResponseType(StatusCodes.Status404NotFound)]
 		[ProducesDefaultResponseType]
-		[Authorize(Roles = "admin")]
+		[Authorize(Roles = "admin, Admin")]
 		public IActionResult GetUser(int id)
 		{
 			User user = _userRepo?.GetUser(id);
@@ -105,7 +104,7 @@ namespace NZMartialArtsGymFinderAPI.Controllers
 		[ProducesResponseType(StatusCodes.Status404NotFound)]
 		[ProducesResponseType(StatusCodes.Status409Conflict)]
 		[ProducesResponseType(StatusCodes.Status500InternalServerError)]
-		[Authorize(Roles = "admin")]
+		[Authorize(Roles = "admin, Admin")]
 		public IActionResult DeleteUser(int id)
 		{
 			User user = _userRepo.GetUser(id);
