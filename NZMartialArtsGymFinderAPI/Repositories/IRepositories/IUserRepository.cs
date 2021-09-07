@@ -8,11 +8,12 @@ namespace NZMartialArtsGymFinderAPI.Repositories.IRepositories
 {
 	public interface IUserRepository
 	{
-		public ICollection<User> GetAllUsers();
-		public User GetUser(int id);
-		public bool TryDeleteUser(User user);
+		ICollection<User> GetAllUsers();
+		User GetUser(int id);
+		bool TryDeleteUser(User user);
 		bool IsUniqueUser(string username);
 		User Authenticate(string username, string password);
+		bool DoesPasswordMatch(string passwordText, byte[] passwordBytes, byte[] passwordKey);
 		User Register(AuthenticationModel authenticationModel);
 	}
 }

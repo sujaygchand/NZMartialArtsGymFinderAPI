@@ -14,7 +14,10 @@ namespace NZMartialArtsGymFinderAPI.Models
 		[Required]
 		public string Username { get; set; }
 		[Required]
-		public string Password { get; set; }
+		public byte[] Password { get; set; }
+
+		public byte[] PasswordKey { get; set; }
+
 		public string Role { get; set; }
 		[NotMapped]
 		public string Token { get; set; }
