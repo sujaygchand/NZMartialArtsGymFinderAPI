@@ -66,6 +66,7 @@ namespace NZMartialArtsGymFinderAPI
 
 		private void InitialiseXmlDocumentation()
 		{
+			return;
 			var xmlCommentFileName = $"{Assembly.GetExecutingAssembly().GetName().Name}.xml";
 			var xmlCommentsFullPath = Path.Combine(AppContext.BaseDirectory, xmlCommentFileName);
 			swaggerGenOptions.IncludeXmlComments(xmlCommentsFullPath);
