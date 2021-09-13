@@ -143,3 +143,4 @@ E:\SoftwareDevelopment\C# projects\NZMartialArtsGymFinder\NZMartialArtsGymFinder
 E:\SoftwareDevelopment\C# projects\NZMartialArtsGymFinder\NZMartialArtsGymFinderAPI\NZMartialArtsGymFinderAPI\obj\Debug\netcoreapp3.1\NZMartialArtsGymFinderAPI.csproj.CopyComplete
 E:\SoftwareDevelopment\C# projects\NZMartialArtsGymFinder\NZMartialArtsGymFinderAPI\NZMartialArtsGymFinderAPI\bin\Debug\netcoreapp3.1\NZMartialArtsGymFinderAPI.xml
 E:\SoftwareDevelopment\C# projects\NZMartialArtsGymFinder\NZMartialArtsGymFinderAPI\NZMartialArtsGymFinderAPI\obj\Debug\netcoreapp3.1\NZMartialArtsGymFinderAPI.csproj.AssemblyReference.cache
+E:\SoftwareDevelopment\C# projects\NZMartialArtsGymFinder\NZMartialArtsGymFinderAPI\NZMartialArtsGymFinderAPI\obj\Debug\netcoreapp3.1\NZMartialArtsGymFinderAPI.GeneratedMSBuildEditorConfig.editorconfig
