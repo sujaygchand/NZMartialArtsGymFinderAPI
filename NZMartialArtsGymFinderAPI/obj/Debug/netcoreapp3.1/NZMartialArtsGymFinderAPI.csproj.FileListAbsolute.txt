@@ -142,5 +142,10 @@ E:\SoftwareDevelopment\C# projects\NZMartialArtsGymFinder\NZMartialArtsGymFinder
 E:\SoftwareDevelopment\C# projects\NZMartialArtsGymFinder\NZMartialArtsGymFinderAPI\NZMartialArtsGymFinderAPI\obj\Debug\netcoreapp3.1\NZMartialArtsGymFinderAPI.MvcApplicationPartsAssemblyInfo.cs
 E:\SoftwareDevelopment\C# projects\NZMartialArtsGymFinder\NZMartialArtsGymFinderAPI\NZMartialArtsGymFinderAPI\obj\Debug\netcoreapp3.1\NZMartialArtsGymFinderAPI.csproj.CopyComplete
 E:\SoftwareDevelopment\C# projects\NZMartialArtsGymFinder\NZMartialArtsGymFinderAPI\NZMartialArtsGymFinderAPI\bin\Debug\netcoreapp3.1\NZMartialArtsGymFinderAPI.xml
-E:\SoftwareDevelopment\C# projects\NZMartialArtsGymFinder\NZMartialArtsGymFinderAPI\NZMartialArtsGymFinderAPI\obj\Debug\netcoreapp3.1\NZMartialArtsGymFinderAPI.csproj.AssemblyReference.cache
 E:\SoftwareDevelopment\C# projects\NZMartialArtsGymFinder\NZMartialArtsGymFinderAPI\NZMartialArtsGymFinderAPI\obj\Debug\netcoreapp3.1\NZMartialArtsGymFinderAPI.GeneratedMSBuildEditorConfig.editorconfig
+E:\SoftwareDevelopment\C# projects\NZMartialArtsGymFinder\NZMartialArtsGymFinderAPI\NZMartialArtsGymFinderAPI\bin\Debug\netcoreapp3.1\Amazon.Lambda.APIGatewayEvents.dll
+E:\SoftwareDevelopment\C# projects\NZMartialArtsGymFinder\NZMartialArtsGymFinderAPI\NZMartialArtsGymFinderAPI\bin\Debug\netcoreapp3.1\Amazon.Lambda.ApplicationLoadBalancerEvents.dll
+E:\SoftwareDevelopment\C# projects\NZMartialArtsGymFinder\NZMartialArtsGymFinderAPI\NZMartialArtsGymFinderAPI\bin\Debug\netcoreapp3.1\Amazon.Lambda.AspNetCoreServer.dll
+E:\SoftwareDevelopment\C# projects\NZMartialArtsGymFinder\NZMartialArtsGymFinderAPI\NZMartialArtsGymFinderAPI\bin\Debug\netcoreapp3.1\Amazon.Lambda.Core.dll
+E:\SoftwareDevelopment\C# projects\NZMartialArtsGymFinder\NZMartialArtsGymFinderAPI\NZMartialArtsGymFinderAPI\bin\Debug\netcoreapp3.1\Amazon.Lambda.Logging.AspNetCore.dll
+E:\SoftwareDevelopment\C# projects\NZMartialArtsGymFinder\NZMartialArtsGymFinderAPI\NZMartialArtsGymFinderAPI\bin\Debug\netcoreapp3.1\Amazon.Lambda.Serialization.SystemTextJson.dll
